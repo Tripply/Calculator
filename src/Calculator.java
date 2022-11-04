@@ -20,31 +20,36 @@ public class Calculator {
     static String fst="";
     static String prim=scan.next();
     static char[] operation = new char[10];
-
+    static boolean two=false;
     public static void main (String[] args) {
-        if(prim.length()<=5) {
+
             char oper = operationType();
             String fst = numbers();
             String scnd = numbers();
+            try {
+                String thcnd = numbers();
+
+            }
+            catch (Exception exception){
+
+                two=true;
+            }
 
             String typeF = arabOrRome(fst);
             int fcnt = counter;
             String typeS = arabOrRome(scnd);
             int scnt = counter;
 
-            if (typeF.equals(typeS)) {
+            if (typeF.equals(typeS)&&two==true) {
                 String allType = typeF;
                 Calculation(oper, allType, fcnt, scnt);
             }
-            else {
+            else if(two==true){
                 System.out.println("используются одновременно разные системы счисления");
             }
-        }
-        else {
-            System.out.println("Не больше двух операндов и одного оператора");
-
-        }
-
+            else {
+                System.out.println("Не больше двух операндов и одного оператора");
+            }
 
     }
 
